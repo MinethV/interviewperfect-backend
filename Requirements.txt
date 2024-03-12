@@ -1,0 +1,6 @@
+fastapi[all]~=0.109.0
+pydantic-settings
+python-dotenv
+motor
+requests
+
