@@ -20,8 +20,8 @@ async def create_question(question: Question):
     collection_name.insert_one(dict(question))
 
 #Update a question
-@router.get("/{id}")
-async def get_question_by_id(id:str, question: Question):
+@router.put("/{id}")
+async def put_question(id:str, question: Question):
     collection_name.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(question)})
 
 #Delete a question
