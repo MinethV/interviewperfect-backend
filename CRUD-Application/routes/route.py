@@ -13,3 +13,7 @@ router = APIRouter()
 async def get_all_questions():
     questions = list_serial(collection_name.find())
     return questions
+
+@router.post("/")
+async def create_question(question: Question):
+    collection_name.insert_one(dict(question))
