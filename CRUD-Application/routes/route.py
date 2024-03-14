@@ -23,3 +23,8 @@ async def create_question(question: Question):
 @router.get("/{id}")
 async def get_question_by_id(id:str, question: Question):
     collection_name.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(question)})
+
+#Delete a question
+@router.delete("/{id}")
+async def delete_question(id:str):
+    collection_name.find_one_and_delete({"_id": ObjectId(id)})
