@@ -1,0 +1,37 @@
+.imageCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .imageCol img {
+    max-width: 50%;
+    max-height: 50%;
+  }
+  
+  .textCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .heading {
+    font-size: 5rem;
+    color: #0056b3;
+  }
+  
+  .btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-primary:hover {
+    background-color: #003366;
+    border-color: #003366;
+  }
+  .landing-row {
+    
+    display: flex;
+    
+  }
