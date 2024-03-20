@@ -1,7 +1,8 @@
-
 from typing import List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
+
 from config.db import PyObjectId
+
 
 class ModelVideosModel(BaseModel):
     """
@@ -15,6 +16,11 @@ class ModelVideosModel(BaseModel):
     question: str = Field(...)
     filename: str = Field(...)
     firebase_download_url: str = Field(...)
+    model_config = ConfigDict(
+        populate_by_name=True,
+        arbitrary_types_allowed=True,
+    )
+
 
 class ModelVideoCollection(BaseModel):
     """
