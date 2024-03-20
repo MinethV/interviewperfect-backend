@@ -26,6 +26,7 @@
 
   .fw-light{
     color: #616364;
+    font-weight: bold;
   }
   
   .btn-primary {
@@ -44,7 +45,7 @@
     
   }
   .box {
-    background-color: linear-gradient(rgba(255, 255, 255, 0.874), rgba(255, 255, 255, 0.874));
+    background-color: linear-gradient(rgba(255, 255, 255, 0.918), rgba(255, 255, 255, 0.918));
     border: 1px solid #ece8e8;
     box-shadow: 0 2px 4px  #d0cfcf;
     border-radius: 45px;
@@ -63,7 +64,7 @@
      
   .box button {
         margin-top: auto;
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
         width: 100%; 
         padding: 1rem 3rem; 
         border-radius: 5rem; 
