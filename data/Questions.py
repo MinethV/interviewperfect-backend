@@ -6,7 +6,7 @@ from config.db import PyObjectId
 
 class QuestionModel(BaseModel):
     """
-    Container for a single movie record.
+    Container for a single question.
     """
 
     # The primary key for the MovieModel, stored as a ⁠ str ⁠ on the instance.
