@@ -14,6 +14,7 @@ MONGODB_URL: str = "mongodb+srv://{}:{}@{}/".format(
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 db = client.get_database("InterviewPerfect")
 questions_collection = db.get_collection("Questions")
+modelvideo_collection = db.get_collection("model_Videos")
 
 
 
