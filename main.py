@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import config.env as env
 import config.db as db
 from data import Questions
+from data import modelVideos
 
 app = FastAPI()
 
@@ -71,6 +72,22 @@ async def get_software_engineering_questions():
     """
     return Questions.QuestionCollection(
         Questions=await db.questions_collection.find({"industry": "Software Engineering"}).to_list(5)
+    )
+
+
+@app.get(
+    "/modelvideos",
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_question():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find().to_list(21)
     )
 
  
