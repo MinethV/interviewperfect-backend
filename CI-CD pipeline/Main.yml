@@ -1,14 +1,18 @@
 name: Run unittests
 on:
-push:
-branches:
-- '*'
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
-run-tests:
-runs-on: koyeb-runner
+  run-tests:
+    runs-on: koyeb-runner
+
 steps:
-- name: Checkout repository
-uses: actions/checkout@v4
-- name: Run tests
-run: |
-python -m unittest
+  - name: Checkout repository
+    uses: actions/checkout@v4
+
+  - name: Run tests
+    run: |
+    python -m unittest
