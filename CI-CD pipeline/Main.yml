@@ -2,7 +2,7 @@ name: Run unittests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "CI-CD pipeline" ]
   pull_request:
     branches: [ "main" ]
 
@@ -40,8 +40,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      steps:
       - name: Deploy to Koyeb
-        run: |
-          # Replace the following commands with your deployment steps
-          koyeb login --api-key="${{ secrets.KOYEB_API_KEY }}"
-          koyeb deploy --file=koyeb.yaml
+        uses: koyebhq/action@v1
+        with:
+          api-key: ${{ secrets.KOYEB_API_KEY }}
