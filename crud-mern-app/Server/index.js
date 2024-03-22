@@ -42,6 +42,13 @@ app.get('/getQuestion/:id', (req,res) => {
         .catch(err => res.json(err))
 })
 
+app.delete('/deleteQuestion/:id', (req,res) => {
+    const id = req.params.id;
+    QuestionModel.findByIdAndDelete({_id:id})
+        .then(Questions => res.json(Questions))
+        .catch(err => res.json(err))
+})
+
 app.put('/updateQuestion/:id', (req,res) => {
     const id = req.params.id;
     QuestionModel.findByIdAndUpdate({_id:id}, {

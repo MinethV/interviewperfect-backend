@@ -19,9 +19,9 @@ export default function NavBar() {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                             <ul className="navbar-nav ms-auto">
-                                <CustomLink className="nav-item nav-link fs-5 pe-3 navLink" to="/Login">Log
-                                    In </CustomLink>
-                                <button type="button" className="btn btn-outline-primary">Get Started</button>
+                                {/*<CustomLink className="nav-item nav-link fs-5 pe-3 navLink" to="/Login">Log*/}
+                                {/*    In </CustomLink>*/}
+                                <Link to="/create" className='ms-2 btn btn-success'>Add Questions</Link>
                                 <CustomLink to='/Profile'><i className="bi bi-person-circle ms-3 "></i></CustomLink>
                             </ul>
                         </div>

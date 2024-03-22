@@ -17,7 +17,7 @@ function App() {
                   {/*<Route path="/Login" element={<Landing/>}/>*/}
                   <Route path='/read' element={<Questions/>} ></Route>
                   <Route path='/create' element={<CreateQuestion/>} ></Route>
-                  <Route path='/update' element={<UpdateQuestion/>} ></Route>
+                  <Route path='/update/:id' element={<UpdateQuestion/>} ></Route>
               </Routes>
           </BrowserRouter>
       </>
