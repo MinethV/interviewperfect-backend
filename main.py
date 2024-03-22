@@ -60,6 +60,10 @@ async def get_software_engineering_questions():
     )
 
 
+
+
+
+
 @app.get(
     "/questions/civilengineering",  # Corrected endpoint path
     response_description="List all questions related to Civil Engineering",
@@ -73,6 +77,7 @@ async def get_civil_engineering_questions():
     return Questions.QuestionCollection(
         Questions=await db.questions_collection.find({"industry": "Civil Engineering"}).to_list(5)
     )
+
 
 
 @app.get(
@@ -105,9 +110,24 @@ async def get_software_engineering_videos():
     return modelVideos.ModelVideoCollection(
         modelVideos=await db.modelvideo_collection.find({'industry':'Software Engineering'}).to_list(2)
     )   
- 
 
- @app.get(
+
+@app.get(
+    "/questions/softwareengineering",  # Corrected endpoint path
+    response_description="List all questions related to Human Resorse",
+    response_model=Questions.QuestionCollection,
+    response_model_by_alias=False,
+)
+async def get_human_resource_questions():
+    """
+    List all questions related to Human Resource in the database.
+    """
+    return Questions.QuestionCollection(
+        Questions=await db.questions_collection.find({"industry": "Human Resource"}).to_list(5)
+    )
+
+
+@app.get(
     "/modelvideos/civilengineering",  
     response_description="List all model videos",
     response_model= modelVideos.ModelVideoCollection,
@@ -137,3 +157,7 @@ async def get_human_resources_videos():
     return modelVideos.ModelVideoCollection(
         modelVideos=await db.modelvideo_collection.find({'industry':'HR'}).to_list(2)
     )   
+
+ 
+
+ 
