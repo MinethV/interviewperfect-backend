@@ -2,9 +2,9 @@ import { Landing } from "./pages/Landing";
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Questions from "./Questions";
-import CreateQuestion from "./CreateQuestion";
-import UpdateQuestion from "./UpdateQuestion";
+import Questions from "./pages/Questions";
+import CreateQuestion from "./pages/CreateQuestion";
+import UpdateQuestion from "./pages/UpdateQuestion";
 
 function App() {
   return (
