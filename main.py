@@ -58,6 +58,21 @@ async def get_software_engineering_questions():
         Questions=await db.questions_collection.find({"industry": "Software Engineering"}).to_list(5)
     )
 
+@app.get(
+    "/questions/civilengineering",  # Corrected endpoint path
+    response_description="List all questions related to Civil Engineering",
+    response_model=Questions.QuestionCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_questions():
+    """
+    List all questions related to Civil Engineering in the database.
+    """
+    return Questions.QuestionCollection(
+        Questions=await db.questions_collection.find({"industry": "Civil Engineering"}).to_list(5)
+    )
+
+
  
 
 
