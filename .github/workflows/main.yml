@@ -2,9 +2,9 @@ name: Run unittests
 
 on:
   push:
-    branches: [ "CI-CD pipeline" ]
+    branches: [ CI-CD pipeline ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   test:
