@@ -188,4 +188,67 @@ async def get_ui_ux_engineering_technical():
         ).to_list(4)
     )   
 
+# Civil Engineering
+@app.get(
+    "/modelvideos/civilengineering/common",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_common():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Common"}
+                ]
+            }
+        ).to_list(3)
+    )   
+
+@app.get(
+    "/modelvideos/civilengineering/situational",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_situational():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Situational"}
+                ]
+            }
+        ).to_list(3)
+    )   
+    
+@app.get(
+    "/modelvideos/civilengineering/technical",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_technical():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Technical"}
+                ]
+            }
+        ).to_list(4)
+    )   
 
