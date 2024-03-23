@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Questions from "./pages/Questions";
 import CreateQuestion from "./pages/CreateQuestion";
 import UpdateQuestion from "./pages/UpdateQuestion";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                   <Route path='/create' element={<CreateQuestion/>} ></Route>
                   <Route path='/update/:id' element={<UpdateQuestion/>} ></Route>
               </Routes>
+              <Footer/>
           </BrowserRouter>
       </>
 

@@ -58,14 +58,14 @@ function UpdateQuestion() {
         <div className="d-flex vh-100 justify-content-center align-items-center" id="bgGlobe">
             <div className="w-50 bg-white rounded p-3">
                 <form onSubmit={Update}>
-                    <h2>Update User</h2>
+                    <h2>Update Question</h2>
                     <div className="mb-2">
                         <label htmlFor="industry" className="form-label">Industry</label>
                         <select className="form-select" aria-label="Industry selection" value={industry}
                                 onChange={(e) => setIndustry(e.target.value)} required>
                             <option value="Software Engineering">Software Engineering</option>
                             <option value="Civil Engineering">Civil Engineering</option>
-                            <option value="Human Resource">Human Resource</option>
+                            <option value="HR">Human Resource</option>
                             <option value="UI & UX Engineering">UI & UX Engineering</option>
 
                         </select>

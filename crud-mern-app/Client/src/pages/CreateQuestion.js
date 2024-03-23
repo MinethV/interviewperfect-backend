@@ -43,7 +43,7 @@ function CreateQuestion() {
         <div className="d-flex vh-100 justify-content-center align-items-center" id="bgGlobe">
             <div className="w-50 bg-white rounded p-3">
                 <form onSubmit={Submit}>
-                    <h2>Create User</h2>
+                    <h2>Create Question</h2>
                     <div className="mb-2">
                         <label htmlFor="industry" className="form-label">Industry</label>
                         <select className="form-select" aria-label="Industry selection"
@@ -51,7 +51,7 @@ function CreateQuestion() {
                             <option selected>Choose the Type</option>
                             <option value="Software Engineering">Software Engineering</option>
                             <option value="Civil Engineering">Civil Engineering</option>
-                            <option value="Human Resource">Human Resource</option>
+                            <option value="HR">Human Resource</option>
                             <option value="UI & UX Engineering">UI & UX Engineering</option>
 
                         </select>
