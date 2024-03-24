@@ -2,6 +2,7 @@ from fastapi import FastAPI, Body, status, HTTPException
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException, Body, status
 from fastapi.middleware.cors import CORSMiddleware
+from filler_words import filler_percentage
 
 import config.env as env
 import config.db as db
@@ -90,8 +91,6 @@ async def get_question():
         modelVideos=await db.modelvideo_collection.find().to_list(21)
     )
 
- 
-
-
-
-
+@app.get("/fillerWordsPercentage/{userText}")
+async def get_filler_words_percentage(userText):
+    return filler_percentage(userText)
