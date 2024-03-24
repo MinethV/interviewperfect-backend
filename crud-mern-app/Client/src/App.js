@@ -6,6 +6,7 @@ import Questions from "./pages/Questions";
 import CreateQuestion from "./pages/CreateQuestion";
 import UpdateQuestion from "./pages/UpdateQuestion";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                   <Route path='/read' element={<Questions/>} ></Route>
                   <Route path='/create' element={<CreateQuestion/>} ></Route>
                   <Route path='/update/:id' element={<UpdateQuestion/>} ></Route>
+                  <Route path='/Login' element={<Login/>} ></Route>
               </Routes>
               <Footer/>
           </BrowserRouter>
