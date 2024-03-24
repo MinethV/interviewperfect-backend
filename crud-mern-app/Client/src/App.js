@@ -6,7 +6,6 @@ import Questions from "./pages/Questions";
 import CreateQuestion from "./pages/CreateQuestion";
 import UpdateQuestion from "./pages/UpdateQuestion";
 import Footer from "./components/Footer";
-import Login from "./pages/Login";
 import {Profile} from "./pages/Profile";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
                   <Route path='/read' element={<Questions/>} ></Route>
                   <Route path='/create' element={<CreateQuestion/>} ></Route>
                   <Route path='/update/:id' element={<UpdateQuestion/>} ></Route>
-                  <Route path='/Login' element={<Login/>} ></Route>
                   <Route path='/profile' element={<Profile/>} ></Route>
               </Routes>
               <Footer/>
