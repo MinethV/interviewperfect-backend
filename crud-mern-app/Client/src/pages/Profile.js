@@ -1,13 +1,35 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../stylesheets/Profile.css';
 import {useAuth0} from "@auth0/auth0-react";
 import {LogoutButton} from "../components/LogoutButton";
+import VantaGlobe from "vanta/src/vanta.globe";
+
 
 export const Profile = () => {
     const {user,isAuthenticated} = useAuth0();
+
+    useEffect(
+        () => {
+            VantaGlobe({
+                el: "#bgGlobe",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: true,
+                minHeight: 100.00,
+                minWidth: 100.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0xdc3fff,
+                color2: 0x3f3fff,
+                size: 1.10,
+                backgroundColor: 0xeaf9f9
+            });
+        }, []
+    )
+
     return (
         isAuthenticated && (
-            <div className="profile">
+            <div className="profile" id="bgGlobe">
 
                 <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
                     <div className="card p-4 w-auto">
