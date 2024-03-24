@@ -41,43 +41,8 @@ async def get_question():
 
     """
     return Questions.QuestionCollection(
-        Questions=await db.questions_collection.find().to_list(21)
+        Questions=await db.questions_collection.find().to_list(90)
     )
-
-
-@app.get(
-    "/questions/softwareengineering",  # Corrected endpoint path
-    response_description="List all questions related to Software Engineering",
-    response_model=Questions.QuestionCollection,
-    response_model_by_alias=False,
-)
-async def get_software_engineering_questions():
-    """
-    List all questions related to Software Engineering in the database.
-    """
-    return Questions.QuestionCollection(
-        Questions=await db.questions_collection.find({"industry": "Software Engineering"}).to_list(5)
-    )
-
-
-
-
-
-
-@app.get(
-    "/questions/civilengineering",  # Corrected endpoint path
-    response_description="List all questions related to Civil Engineering",
-    response_model=Questions.QuestionCollection,
-    response_model_by_alias=False,
-)
-async def get_civil_engineering_questions():
-    """
-    List all questions related to Civil Engineering in the database.
-    """
-    return Questions.QuestionCollection(
-        Questions=await db.questions_collection.find({"industry": "Civil Engineering"}).to_list(5)
-    )
-
 
 
 @app.get(
@@ -92,7 +57,7 @@ async def get_question():
 
     """
     return modelVideos.ModelVideoCollection(
-        modelVideos=await db.modelvideo_collection.find().to_list(21)
+        modelVideos=await db.modelvideo_collection.find().to_list(20)
     )
 
 
@@ -108,23 +73,8 @@ async def get_software_engineering_videos():
 
     """
     return modelVideos.ModelVideoCollection(
-        modelVideos=await db.modelvideo_collection.find({'industry':'Software Engineering'}).to_list(2)
+        modelVideos=await db.modelvideo_collection.find({'industry':'Software Engineering'}).to_list(20)
     )   
-
-
-@app.get(
-    "/questions/softwareengineering",  # Corrected endpoint path
-    response_description="List all questions related to Human Resorse",
-    response_model=Questions.QuestionCollection,
-    response_model_by_alias=False,
-)
-async def get_human_resource_questions():
-    """
-    List all questions related to Human Resource in the database.
-    """
-    return Questions.QuestionCollection(
-        Questions=await db.questions_collection.find({"industry": "Human Resource"}).to_list(5)
-    )
 
 
 @app.get(
@@ -139,7 +89,7 @@ async def get_civil_engineering_videos():
 
     """
     return modelVideos.ModelVideoCollection(
-        modelVideos=await db.modelvideo_collection.find({'industry':'Civil Engineering'}).to_list(2)
+        modelVideos=await db.modelvideo_collection.find({'industry':'Civil Engineering'}).to_list(20)
     )   
 
 
@@ -155,9 +105,258 @@ async def get_human_resources_videos():
 
     """
     return modelVideos.ModelVideoCollection(
-        modelVideos=await db.modelvideo_collection.find({'industry':'HR'}).to_list(2)
+        modelVideos=await db.modelvideo_collection.find({'industry':'HR'}).to_list(20)
     )   
 
- 
+@app.get(
+    "/modelvideos/uiuxengineering",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_ui_ux_engineering():
+    """
+    List all of the questions in the database.
 
- 
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({'industry':'UI & UX Engineering'}).to_list(20)
+    )   
+
+
+# UI/UX Engineering
+@app.get(
+    "/modelvideos/uiuxengineering/common",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_ui_ux_engineering_common():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'UI & UX Engineering'},
+                    {"question_type": "Common"}
+                ]
+            }
+        ).to_list(3)
+    )   
+
+@app.get(
+    "/modelvideos/uiuxengineering/situational",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_ui_ux_engineering_situational():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'UI & UX Engineering'},
+                    {"question_type": "Situational"}
+                ]
+            }
+        ).to_list(3)
+    )   
+    
+@app.get(
+    "/modelvideos/uiuxengineering/technical",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_ui_ux_engineering_technical():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'UI & UX Engineering'},
+                    {"question_type": "Technical"}
+                ]
+            }
+        ).to_list(4)
+    )   
+
+# Civil Engineering
+@app.get(
+    "/modelvideos/civilengineering/common",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_common():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Common"}
+                ]
+            }
+        ).to_list(3)
+    )   
+
+@app.get(
+    "/modelvideos/civilengineering/situational",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_situational():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Situational"}
+                ]
+            }
+        ).to_list(3)
+    )   
+    
+@app.get(
+    "/modelvideos/civilengineering/technical",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_technical():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Technical"}
+                ]
+            }
+        ).to_list(4)
+    )   
+
+
+
+@app.get(
+    "/modelvideos/civilengineering/common",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_common():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Common"}
+                ]
+            }
+        ).to_list(3)
+    )   
+
+@app.get(
+    "/modelvideos/civilengineering/situational",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_civil_engineering_situational():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'Civil Engineering'},
+                    {"question_type": "Situational"}
+                ]
+            }
+        ).to_list(3)
+    )   
+    
+
+#Human Resource
+@app.get(
+    "/modelvideos/humanresource/common",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_human_resource_common():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'HR'},
+                    {"question_type": "Common"}
+                ]
+            }
+        ).to_list(3)
+    )   
+
+@app.get(
+    "/modelvideos/humanresource/situational",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_human_resource_situational():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'HR'},
+                    {"question_type": "Situational"}
+                ]
+            }
+        ).to_list(3)
+    )   
+    
+@app.get(
+    "/modelvideos/humanresource/technical",  
+    response_description="List all model videos",
+    response_model= modelVideos.ModelVideoCollection,
+    response_model_by_alias=False,
+)
+async def get_human_resource_technical():
+    """
+    List all of the questions in the database.
+
+    """
+    return modelVideos.ModelVideoCollection(
+        modelVideos=await db.modelvideo_collection.find({ 
+                "$and": [ 
+                    {'industry':'HR'},
+                    {"question_type": "Technical"}
+                ]
+            }
+        ).to_list(4)
+    )   
