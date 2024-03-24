@@ -7,5 +7,5 @@ firebase-admin
 gtts
 pymongo
 google.colab
-opencv-python==4.5.3.56
-opencv-python-headless
+opencv-python==4.9.0
+
