@@ -1,11 +1,13 @@
-fastapi[all]~=0.109.0
-pydantic-settings
-python-dotenv
-motor
-requests
-firebase-admin
-gtts
-pymongo
+fastapi[all]~=0.109.0 
+pydantic-settings 
+python-dotenv 
+motor 
+requests 
+firebase-admin 
+gtts 
+pymongo 
 google.colab
 opencv-python==4.9.0
+
+
 
