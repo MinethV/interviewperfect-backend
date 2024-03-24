@@ -2,7 +2,6 @@ from fastapi import FastAPI, Body, status, HTTPException
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException, Body, status
 from fastapi.middleware.cors import CORSMiddleware
-from Facial_Confident_Level.face import run_facial_confidence_detection
 
 import config.env as env
 import config.db as db
@@ -432,9 +431,7 @@ async def get_human_resource_technical():
         ).to_list(4)
     )  
 
-@app.get("/predict/{imageUrl}")
-async def predict(imageUrl):
-    return run_facial_confidence_detection(imageUrl)
+
 
 
 
