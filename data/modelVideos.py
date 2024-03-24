@@ -14,6 +14,9 @@ class ModelVideosModel(BaseModel):
     # but provided as ⁠ id ⁠ in the API requests and responses.
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
     question: str = Field(...)
+    answer : str = Field(...)
+    industry : str = Field(...)
+    question_type : str = Field(...)
     filename: str = Field(...)
     firebase_download_url: str = Field(...)
     model_config = ConfigDict(
