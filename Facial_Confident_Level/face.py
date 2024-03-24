@@ -5,6 +5,7 @@ import base64
 from PIL import Image
 from io import BytesIO
 
+
 # Load the pre-trained CNN model
 model = load_model('facial_confidence_model-2.h5')  # Load your trained model
 
@@ -44,6 +45,7 @@ def detect_facial_confidence(frame):
 
     return frame
 
+
 def base64_to_image(base64_string):
     try:
         # Decode base64 string into bytes
@@ -56,12 +58,14 @@ def base64_to_image(base64_string):
     except Exception as e:
         print(f"Error converting base64 to image: {e}")
         return None
+    
 
-def run_facial_confidence_detection(image_data):
-    image = base64_to_image(image_data)
+def run_facial_confidence_detection(imageUrl):
+    image = base64_to_image(imageUrl)
 
-    if image is not None:
-        frame = np.array(image)
+    frame = cv2.imread(image)
+
+    if frame is not None:
         frame_with_confidence = detect_facial_confidence(frame)
 
         # Display the frame with confidence levels
@@ -73,6 +77,7 @@ def run_facial_confidence_detection(image_data):
     return frame_with_confidence
 
 if __name__ == "__main__":
-    # Example base64 encoded image data
-    image_data = "..."  # Provide your base64 encoded image data here
-    run_facial_confidence_detection(image_data)
+    run_facial_confidence_detection()
+
+
+    
