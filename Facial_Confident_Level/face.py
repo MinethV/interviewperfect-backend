@@ -1,9 +1,13 @@
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
+import base64
+from PIL import Image
+from io import BytesIO
+
 
 # Load the pre-trained CNN model
-model = load_model('Facial_Confident_Level/facial_confidence_model.h5')  # Load your trained model
+model = load_model('facial_confidence_model-2.h5')  # Load your trained model
 
 # Load the face detection cascade
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -41,26 +45,39 @@ def detect_facial_confidence(frame):
 
     return frame
 
-def run_facial_confidence_detection():
-    # Start webcam
-    cap = cv2.VideoCapture(0)
 
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
+def base64_to_image(base64_string):
+    try:
+        # Decode base64 string into bytes
+        image_bytes = base64.b64decode(base64_string)
 
+        # Convert bytes to image
+        image = Image.open(BytesIO(image_bytes))
+
+        return image
+    except Exception as e:
+        print(f"Error converting base64 to image: {e}")
+        return None
+    
+
+def run_facial_confidence_detection(imageUrl):
+    image = base64_to_image(imageUrl)
+
+    frame = cv2.imread(image)
+
+    if frame is not None:
         frame_with_confidence = detect_facial_confidence(frame)
 
         # Display the frame with confidence levels
         cv2.imshow('Facial Confidence Detection', frame_with_confidence)
-
-        # Break the loop if 'q' is pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    # Release the webcam and close OpenCV windows
-    cap.release()
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    else:
+        print("Error: Image not found or could not be read.")
+    return frame_with_confidence
 
 if __name__ == "__main__":
     run_facial_confidence_detection()
+
+
+    
