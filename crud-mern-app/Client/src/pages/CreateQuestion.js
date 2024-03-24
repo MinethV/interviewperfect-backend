@@ -1,19 +1,29 @@
-import React, {useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import VantaGlobe from "vanta/src/vanta.globe";
-import  axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function CreateQuestion() {
-    const [industry, setIndustry] = useState();
-    const [type, setType] = useState();
-    const [question, setQuestion] = useState();
-    const [answer, setAnswer] = useState();
-
+    const [industry, setIndustry] = useState("");
+    const [type, setType] = useState("");
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
+    const [industryError, setIndustryError] = useState(false);
+    const [typeError, setTypeError] = useState(false);
     const navigate = useNavigate();
 
     const Submit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3001/createQuestion", {industry, type, question,answer})
+        if (industry === "" || type === "") {
+            if (industry === "") {
+                setIndustryError(true);
+            }
+            if (type === "") {
+                setTypeError(true);
+            }
+            return;
+        }
+        axios.post("http://localhost:3001/createQuestion", { industry, type, question, answer })
             .then(result => {
                 console.log(result)
                 navigate('/read')
@@ -37,7 +47,7 @@ function CreateQuestion() {
                 size: 1.10,
                 backgroundColor: 0xeaf9f9
             });
-        },[]
+        }, []
     )
     return (
         <div className="d-flex vh-100 justify-content-center align-items-center" id="bgGlobe">
@@ -47,34 +57,35 @@ function CreateQuestion() {
                     <div className="mb-2">
                         <label htmlFor="industry" className="form-label">Industry</label>
                         <select className="form-select" aria-label="Industry selection"
-                                onChange={(e) => setIndustry(e.target.value)} required>
-                            <option selected>Choose the Type</option>
+                                onChange={(e) => { setIndustry(e.target.value); setIndustryError(false); }} value={industry} required>
+                            <option value="">Choose the Type</option>
                             <option value="Software Engineering">Software Engineering</option>
                             <option value="Civil Engineering">Civil Engineering</option>
                             <option value="HR">Human Resource</option>
                             <option value="UI & UX Engineering">UI & UX Engineering</option>
-
                         </select>
+                        {industryError && <p className="text-danger">Please select an industry</p>}
                     </div>
                     <div className="mb-2">
                         <label htmlFor="type" className="form-label">Type</label>
                         <select className="form-select" aria-label="Type selection"
-                                onChange={(e) => setType(e.target.value)} required>
-                        <option selected>Choose the Type</option>
+                                onChange={(e) => { setType(e.target.value); setTypeError(false); }} value={type} required>
+                            <option value="">Choose the Type</option>
                             <option value="Technical">Technical</option>
                             <option value="Situational">Situational</option>
                             <option value="Common">Common</option>
                         </select>
+                        {typeError && <p className="text-danger">Please select a type</p>}
                     </div>
                     <div className="mb-2">
                         <label htmlFor="question" className="form-label">Question</label>
                         <input type="text" placeholder="Enter the Question" className="form-control" id="question"
-                               onChange={(e) => setQuestion(e.target.value)} required/>
+                               value={question} onChange={(e) => setQuestion(e.target.value)} required />
                     </div>
                     <div className="mb-2">
                         <label htmlFor="answer" className="form-label">Answer</label>
                         <input type="text" placeholder="Enter the Answer" className="form-control" id="answer"
-                               onChange={(e) => setAnswer(e.target.value)} required/>
+                               value={answer} onChange={(e) => setAnswer(e.target.value)} required />
                     </div>
                     <button type="submit" className="btn btn-success">Create</button>
                 </form>
