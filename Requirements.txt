@@ -3,4 +3,9 @@ pydantic-settings
 python-dotenv
 motor
 requests
+firebase-admin
+gtts
+pymongo
+google.colab
+
 
