@@ -1,6 +1,8 @@
 import React from "react";
 import logo from '../images/logo.png';
 import {Link, useMatch, useResolvedPath} from "react-router-dom";
+import {LogoutButton} from "./LogoutButton";
+import {LoginButton} from "./LoginButton";
 
 export default function NavBar() {
     return (
@@ -19,8 +21,10 @@ export default function NavBar() {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                             <ul className="navbar-nav ms-auto">
-                                <CustomLink className="ms-2 btn btn-primary" to="/Login">Log In </CustomLink>
+                                <LoginButton/>
+                                <LogoutButton/>
                                 <Link to="/create" className='ms-2 btn btn-primary'>Add Questions</Link>
+                                <CustomLink className="ms-2 btn btn-primary" to="/profile">Profile</CustomLink>
                             </ul>
                         </div>
                     </div>
