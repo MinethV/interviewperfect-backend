@@ -1,6 +1,5 @@
 import nltk
 
-text = "Hi there umm"
 filler_words_list = [
     "um",
     "uh",
@@ -111,11 +110,14 @@ filler_words_list = [
     "umm"
 ]
 
-tokens = nltk.word_tokenize(text)
-text = text.lower()
 
-filler_words_count = 0
-for word in tokens:
-    if word in filler_words_list:
-        filler_words_count += 1
-percentageFiller = (filler_words_count/len(tokens)) * 100
+def filler_percentage (text):
+    tokens = nltk.word_tokenize(text)
+    text = text.lower()
+
+    filler_words_count = 0
+    for word in tokens:
+        if word in filler_words_list:
+            filler_words_count += 1
+    percentageFiller = (filler_words_count/len(tokens)) * 100
+
