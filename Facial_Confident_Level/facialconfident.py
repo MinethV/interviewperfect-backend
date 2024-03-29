@@ -91,3 +91,4 @@ async def run_facial_confidence_detection(image_data: ImageData):
     else:
         raise HTTPException(status_code=400, detail="Error: Image not found or could not be converted.")
 
+
