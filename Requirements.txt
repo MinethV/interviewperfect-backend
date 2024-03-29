@@ -9,6 +9,8 @@ pymongo
 google.colab
 
 opencv-python
+opencv-python-headless
+
 
 
 
