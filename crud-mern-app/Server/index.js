@@ -1,30 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
 const QuestionModel = require('./models/Questions');
-
-//----------------------------------
-
-// const db = require('.connection')
-//
-// require ('dotenv').config();
-// const connectionParams = {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true
-// }
-// const url = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.lkfpc3n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-// const connect = mongoose.connect(url, connectionParams).then(() => console.log('connected to be'))
-//     .catch(err => console.log('error',err));
-// module.exports = connect;
-//---------------------------------------
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://sasirujayawardhana:3SwHrqHeZa9P@cluster0.lkfpc3n.mongodb.net/InterviewPerfect?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/InterviewPerfect?retryWrites=true&w=majority&appName=Cluster0`)
 .then(() => {
     console.log('MongoDB connected');
 });
