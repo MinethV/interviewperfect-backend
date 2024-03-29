@@ -2,9 +2,15 @@ from fastapi import FastAPI, Body, status, HTTPException
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException, Body, status
 from fastapi.middleware.cors import CORSMiddleware
+from Facial_Confident_Level.face import run_facial_confidence_detection
+
+from Facial_Confident_Level.facialconfident import router as facial_confidence_router
+from speechtotext import router as filler_router
+
 
 import config.env as env
 import config.db as db
+import speech_recognition as sr
 from data import Questions
 from data import modelVideos
 
@@ -431,11 +437,24 @@ async def get_human_resource_technical():
         ).to_list(4)
     )  
 
+@app.get("/predict/{imageUrl}")
+async def predict_1(imageUrl):
+    print(imageUrl)
+    return run_facial_confidence_detection(imageUrl)
 
 
 
+@app.get("/predictvoice/{audioConvertion}")
+async def predict_2(audioConvertion):
+    return speech_recognize(audioConvertion)
 
 
+
+# Include the router from facialconfident.py
+app.include_router(facial_confidence_router)
+
+
+app.include_router(filler_router)
 
 
 
