@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+import {disableReactDevTools} from "@fvilers/disable-react-devtools";
+
+if (process.env.NODE_ENV === 'production') disableReactDevTools();
+
 const QuestionModel = require('./models/Questions');
 require('dotenv').config();
 
