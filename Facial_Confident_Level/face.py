@@ -1,10 +1,14 @@
 import subprocess
 
-def install_package(package_name):
-    subprocess.check_call(["pip", "install", package_name])
+# Define the command to install the library
+install_command = "apt-get install -y libgl1-mesa-glx"
 
-package_to_install = "opencv-python"  
-install_package(package_to_install)
+# Execute the command using subprocess
+try:
+    subprocess.run(install_command, shell=True, check=True)
+    print("Library installation successful.")
+except subprocess.CalledProcessError as e:
+    print(f"Error installing library: {e}")
 
 
 import cv2
