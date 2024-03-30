@@ -6,11 +6,11 @@ requests
 firebase-admin 
 gtts 
 pymongo 
-google.colab
 
 opencv-python
-opencv-python-headless
-
+tensorflow
+Pillow
+SpeechRecognition
 
 
 
