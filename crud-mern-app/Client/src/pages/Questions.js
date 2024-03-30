@@ -35,7 +35,7 @@ function Questions() {
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        axios.get("http://localhost:3001/read")
+        axios.get("https://localhost:3001/read")
             .then(result => setQuestions(result.data))
             .catch(err => console.log(err));
     }, []);
