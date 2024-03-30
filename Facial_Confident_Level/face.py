@@ -1,10 +1,9 @@
-from cv2 import cv2
+import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 import base64
 from PIL import Image
 from io import BytesIO
-
 
 # Load the pre-trained CNN model
 model = load_model('facial_confidence_model-2.h5')  # Load your trained model
