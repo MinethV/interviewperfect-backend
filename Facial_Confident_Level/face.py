@@ -1,17 +1,4 @@
-import subprocess
-
-# Define the command to install the library
-install_command = "apt-get install -y libgl1-mesa-glx"
-
-# Execute the command using subprocess
-try:
-    subprocess.run(install_command, shell=True, check=True)
-    print("Library installation successful.")
-except subprocess.CalledProcessError as e:
-    print(f"Error installing library: {e}")
-
-
-import cv2
+from cv2 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 import base64
