@@ -1,3 +1,12 @@
+import subprocess
+
+def install_package(package_name):
+    subprocess.check_call(["pip", "install", package_name])
+
+package_to_install = "opencv-python"  
+install_package(package_to_install)
+
+
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
